@@ -19,13 +19,21 @@ https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="script.js"></script>
 
-    <ul class="nav nav-tabs nav-justified">
-        <li class="active"><a href="#">All</a></li>
-        <li><a href="#">Offline</a></li>
-        <li><a href="#">Online</a></li>
-    </ul>
+    <div class="container-fluid">
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active"><a href="#" id="all">All</a></li>
+            <li><a href="#" id="offline">Offline</a></li>
+            <li><a href="#" id="online">Online</a></li>
+        </ul>
 
-    <ul id="streamers-list" class="streamer-list"></ul>
+        <form id="live-search" action="" class="styled" method="post">
+            <fieldset>
+                <input type="text" class="text-input" id="filter" value="" />
+            </fieldset>
+        </form>
+
+        <ul id="streamers-list" class="streamer-list"></ul>
+    </div>
 </body>
 
 </html>

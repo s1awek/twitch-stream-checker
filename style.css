@@ -19,16 +19,21 @@
 
 .left-container {
     float: left;
+    width: 80%;
+    background-color: gray;
 }
 
 .right-container {
     float: right;
-}
-
-.streamer-list li:nth-child(odd) {
-    background-color: gray;
+    width: 20%;
+    background-color: black;
+    color: white;
 }
 
 .hidden {
     display: none;
+}
+
+.container-fluid {
+    max-width: 800px;
 }
