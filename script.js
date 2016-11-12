@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    'use strict';
     var baseUrl = 'https://wind-bow.hyperdev.space/twitch-api/';
     var user = '/users/';
     var channel = '/channels/';
@@ -7,21 +8,20 @@ $(document).ready(function () {
 
     function getData(parm, user_name) {
         function myUserFunction(json) {
-            console.log(json);
             if (json.status == '404') {
                 $('#streamers-list').append('<li class="clearfix" id="' + user_name + '"><div class="left-container"><span class="name-404 name">' + user_name + '</span></div></li>');
-                $('#' + user_name + ' .left-container').prepend('<img src="img/placeholder.png" class="logo clearfix" alt="Logo placeholder" width="100" height="100" / >');
+                $('#' + user_name + ' .left-container').prepend('<img src="https://res.cloudinary.com/s1awek/image/upload/twitchtv/placeholder.png" class="logo clearfix" alt="Logo placeholder" width="100" height="100" / >');
             } else {
                 $('#streamers-list').append('<li class="clearfix" id="' + user_name + '"><div class="left-container"><a href="#" class="name ' + user_name + '">' + json.display_name + '</a></div></li>');
 
-                if (json.bio != null) {
+                if (json.bio !== null) {
                     //console.log(json._id);
                     $('#' + user_name + ' .left-container').append('<p class="bio"><span class="highlight">Bio: </span>' + json.bio + '</p>');
                 }
-                if (json.logo != null) {
+                if (json.logo !== null) {
                     $('#' + user_name + ' .left-container').prepend('<a href="#" class="' + user_name + '"><img src="' + json.logo + '" class="logo clearfix" alt="Logo" width="100" height="100" / ></a>');
                 } else {
-                    $('#' + user_name + ' .left-container').prepend('<img src="img/placeholder.png" class="logo clearfix" alt="Logo placeholder" width="100" height="100" / >');
+                    $('#' + user_name + ' .left-container').prepend('<img src="https://res.cloudinary.com/s1awek/image/upload/twitchtv/placeholder.png" class="logo clearfix" alt="Logo placeholder" width="100" height="100" / >');
                 }
             }
         }
@@ -103,21 +103,18 @@ $(document).ready(function () {
 
     $('#filter').keyup(function () {
 
-        // Retrieve the input field text and reset the count to zero
-        var filter = $(this).val(),
-            count = 0;
+        // Retrieve the input field text
+        var filter = $(this).val();
 
-        // Loop through the comment list
+        // Loop through the streamers list
         $('.name').each(function () {
 
             // If the list item does not contain the text phrase fade it out
             if ($(this).text().search(new RegExp(filter, 'i')) < 0) {
                 $(this).parent().parent().fadeOut();
 
-                // Show the list item if the phrase matches and increase the count by 1
             } else {
                 $(this).parent().parent().fadeIn();
-                count++;
             }
         });
 
