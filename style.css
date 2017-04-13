@@ -201,3 +201,7 @@ p {
 .nav {
     margin-top: 30px;
 }
+
+.error {
+    color: red;
+}
